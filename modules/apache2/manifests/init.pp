@@ -6,11 +6,11 @@ class apache2 {
     file { '/etc/apache2/apache2.conf':
         ensure  => file,
         content => template("apache2/apache2.conf"),
-        require => Package['apcahe2'],
+        require => Package['apache2'],
         notify  => Service['apache2'],
     }
 
-    file { '/var/www/apache2-default':
+    file { '/var/www/':
         ensure  => directory,
         source  => '/etc/puppet/private/www',
         recurse => true,
